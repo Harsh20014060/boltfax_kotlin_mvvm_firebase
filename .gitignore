@@ -1,0 +1,19 @@
+# These are some examples of commonly ignored file patterns.
+*.iml
+.gradle
+/local.properties
+/.idea
+.DS_Store
+/build
+/unityLibrary
+/captures
+/release
+.externalNativeBuild
+.cxx
+local.properties
+/app/release
+/app/build
+
+
+
+

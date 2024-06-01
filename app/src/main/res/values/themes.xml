@@ -1,0 +1,30 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.BoltFax" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/navyblue</item>
+    </style>
+
+    <style name="Theme.BoltFax" parent="Base.Theme.BoltFax" />
+
+    <style name="inputBoxAuthenticationStyle">
+        <item name="android:layout_width">@dimen/dp0</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/dp20</item>
+        <item name="android:textSize">@dimen/sp16</item>
+        <item name="android:padding">@dimen/dp10</item>
+        <item name="android:drawablePadding">@dimen/dp10</item>
+        <item name="android:background">@drawable/four_side_rounded_corner</item>
+    </style>
+
+    <style name="buttonStyle">
+        <item name="android:layout_width">@dimen/dp0</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/dp20</item>
+        <item name="android:textSize">@dimen/sp16</item>
+        <item name="android:padding">@dimen/dp10</item>
+        <item name="android:gravity">center</item>
+        <item name="android:drawablePadding">@dimen/dp10</item>
+        <item name="android:background">@drawable/four_side_rounded_corner</item>
+    </style>
+</resources>
