@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/graph_auth"
+    app:startDestination="@id/navLoginFragment">
+
+    <fragment
+        android:id="@+id/navSignupFragment"
+        android:name="com.app.boltfax.SignupFragment"
+        android:label="SignupFragment" >
+        <action
+            android:id="@+id/action_navSignupFragment_to_navLoginFragment"
+            app:destination="@id/navLoginFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/navForgetPasswordFragment"
+        android:name="com.app.boltfax.ForgetPasswordFragment"
+        android:label="ForgetPasswordFragment" >
+        <action
+            android:id="@+id/action_navForgetPasswordFragment_to_navLoginFragment"
+            app:destination="@id/navLoginFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/navLoginFragment"
+        android:name="com.app.boltfax.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_navLoginFragment_to_navSignupFragment"
+            app:destination="@id/navSignupFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+        <action
+            android:id="@+id/action_navLoginFragment_to_navForgetPasswordFragment"
+            app:destination="@id/navForgetPasswordFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+    </fragment>
+</navigation>

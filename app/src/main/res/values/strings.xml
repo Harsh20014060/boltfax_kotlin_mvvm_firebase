@@ -8,7 +8,7 @@
     <string name="hint_password">Password</string>
     <string name="str_otp">OTP</string>
     <string name="str_sign_up">Sign up</string>
-    <string name="str_already_a_boltfax_member">Already a <b>BoltFax Member?</b>  Sign In</string>
+    <string name="str_already_a_boltfax_member">Already a <b>BoltFax Member?</b>  Sign in</string>
     <string name="str_mobile_number">Mobile Number</string>
     <string name="str_new_password">New Password</string>
     <string name="str_confirm_password">Confirm Password</string>
@@ -17,6 +17,11 @@
     <string name="str_full_name">Full Name</string>
     <string name="str_password">Password</string>
     <string name="str_or_dotted">--------- OR ---------</string>
-    <string name="str_new_to_boltfax">New to <b>BoltFax?</b>  Sign Up</string>
+    <string name="str_new_to_boltfax">New to <b>BoltFax?</b>  Sign up</string>
     <string name="str_get_otp">Get OTP</string>
+    <string name="str_loading">Loading</string>
+    <string name="err_internet">Please check your internet connection</string>
+    <string name="str_retry">Retry</string>
+    <string name="str_back_to_login">Back to Login</string>
+    <string name="str_create_a_new_account">Create A New Account</string>
 </resources>

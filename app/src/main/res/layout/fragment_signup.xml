@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context="com.app.boltfax.SignupFragment">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -200,7 +201,7 @@
 
 
         <TextView
-            android:id="@+id/textView9"
+            android:id="@+id/tvSignIn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp20"
