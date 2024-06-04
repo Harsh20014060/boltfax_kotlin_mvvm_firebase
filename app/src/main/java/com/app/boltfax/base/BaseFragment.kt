@@ -22,7 +22,7 @@ abstract class BaseFragment<VB : ViewBinding>(private val inflate: (LayoutInflat
 
     lateinit var rootView: VB
 
-    val baseActivity by lazy {
+    private val baseActivity by lazy {
         activity as BaseActivity<*>
     }
 

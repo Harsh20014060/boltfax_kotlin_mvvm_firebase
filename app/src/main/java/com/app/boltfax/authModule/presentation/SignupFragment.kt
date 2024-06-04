@@ -1,8 +1,9 @@
-package com.app.boltfax
+package com.app.boltfax.authModule.presentation
 
 import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.findNavController
+import com.app.boltfax.R
 import com.app.boltfax.base.BaseFragment
 import com.app.boltfax.databinding.FragmentSignupBinding
 

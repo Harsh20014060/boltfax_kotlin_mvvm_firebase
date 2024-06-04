@@ -17,10 +17,10 @@
             android:name=".SplashActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".mainModule.presentation.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".AuthenticationActivity"
+            android:name=".authModule.presentation.AuthenticationActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

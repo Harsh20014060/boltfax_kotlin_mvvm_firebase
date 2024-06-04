@@ -7,22 +7,22 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.app.boltfax.HomeFragment"
+        android:name="com.app.boltfax.mainModule.presentation.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/categoryFragment"
-        android:name="com.app.boltfax.CategoryFragment"
+        android:name="com.app.boltfax.mainModule.presentation.CategoryFragment"
         android:label="fragment_category"
         tools:layout="@layout/fragment_category" />
     <fragment
         android:id="@+id/cartFragment"
-        android:name="com.app.boltfax.CartFragment"
+        android:name="com.app.boltfax.mainModule.presentation.CartFragment"
         android:label="fragment_cart"
         tools:layout="@layout/fragment_cart" />
     <fragment
         android:id="@+id/settingFragment"
-        android:name="com.app.boltfax.SettingFragment"
+        android:name="com.app.boltfax.mainModule.presentation.SettingFragment"
         android:label="fragment_setting"
         tools:layout="@layout/fragment_setting" />
 </navigation>

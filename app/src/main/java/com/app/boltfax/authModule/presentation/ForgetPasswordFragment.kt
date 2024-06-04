@@ -1,4 +1,4 @@
-package com.app.boltfax
+package com.app.boltfax.authModule.presentation
 
 import android.os.Bundle
 import android.view.View

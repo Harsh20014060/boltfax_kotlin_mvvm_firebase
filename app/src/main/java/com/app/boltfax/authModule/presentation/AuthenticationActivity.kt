@@ -1,13 +1,16 @@
-package com.app.boltfax
+package com.app.boltfax.authModule.presentation
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.fragment.NavHostFragment
+import com.app.boltfax.R
+import com.app.boltfax.base.BaseActivity
+import com.app.boltfax.databinding.ActivityAuthenticationBinding
 
-class AuthenticationActivity : AppCompatActivity() {
+class AuthenticationActivity :
+    BaseActivity<ActivityAuthenticationBinding>(ActivityAuthenticationBinding::inflate) {
 
     private val navHostFragment: NavHostFragment by lazy {
         supportFragmentManager.findFragmentById(R.id.navHostAuthentication) as NavHostFragment
@@ -19,7 +22,7 @@ class AuthenticationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_authentication)
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)

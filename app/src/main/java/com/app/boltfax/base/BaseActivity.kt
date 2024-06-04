@@ -24,7 +24,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
-class BaseActivity<VB : ViewBinding>(private val inflate: (LayoutInflater) -> VB) :
+open class BaseActivity<VB : ViewBinding>(private val inflate: (LayoutInflater) -> VB) :
     PermissionActivity() {
     private val fireAuth by lazy {
         Firebase.auth
