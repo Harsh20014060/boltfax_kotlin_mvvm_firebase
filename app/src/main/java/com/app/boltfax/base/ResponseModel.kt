@@ -5,4 +5,5 @@ data class UserDataModel(
     val password: String? = "",
     val contact: String? = "",
     val countryCode: String? = "",
+    val documentName: String? = "",
 )

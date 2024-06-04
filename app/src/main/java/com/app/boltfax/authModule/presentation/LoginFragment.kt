@@ -1,7 +1,6 @@
 package com.app.boltfax.authModule.presentation
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import com.app.boltfax.R
@@ -16,12 +15,16 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
     private val authViewModel by lazy {
         AuthViewModel()
     }
+    private var otpVerificationID = ""
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         setupOnClickListener()
 
         setupObserver()
+
+        rootView.edMobileNo.setText("7728966450")
+        rootView.edPassword.setText("Agent@123")
     }
 
     private fun setupObserver() {
@@ -61,6 +64,32 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                 }
             }
         }
+
+        authViewModel.otpObserver.observe(viewLifecycleOwner) {
+            when (it) {
+                is Resource.DataNotFound -> {
+                    uiFieldVisibility(loginViaPassword = true)
+                    showSnackBar(
+                        view = rootView.root,
+                        message = it.message ?: ""
+                    )
+                }
+
+                is Resource.Error -> {
+                    uiFieldVisibility(loginViaPassword = true)
+                    showSnackBar(
+                        view = rootView.root,
+                        message = it.message ?: ""
+                    )
+
+                }
+
+                is Resource.Success -> {
+                    otpVerificationID = it.data ?: ""
+
+                }
+            }
+        }
     }
 
     private fun setupOnClickListener() {
@@ -79,11 +108,18 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
     override fun onClick(v: View?) {
         when (v) {
             rootView.btnSignIn -> {
-                authViewModel.login("77289 66450")
+
+                if (rootView.edOTPBox.isEnabled) {
+                    authViewModel.verifyOTP(otpVerificationID, rootView.edOTPBox.text.toString())
+                } else {
+                    authViewModel.login(rootView.edMobileNo.text.toString(),password = rootView.edPassword.text.toString())
+                }
+
             }
 
             rootView.tvGetOTP -> {
-
+                uiFieldVisibility(loginViaPassword = false)
+                authViewModel.generateOTP(requireActivity(), rootView.edMobileNo.text.toString())
             }
 
             rootView.tvForgetPassword -> {
@@ -92,6 +128,14 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
             }
 
         }
+
+    }
+
+    private fun uiFieldVisibility(loginViaPassword: Boolean = true) {
+        rootView.edMobileNo.isEnabled = loginViaPassword
+        rootView.edPassword.isEnabled = loginViaPassword
+
+        rootView.edOTPBox.isEnabled = !loginViaPassword
 
     }
 
