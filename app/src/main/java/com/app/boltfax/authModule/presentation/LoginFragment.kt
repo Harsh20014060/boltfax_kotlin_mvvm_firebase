@@ -1,6 +1,7 @@
 package com.app.boltfax.authModule.presentation
 
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import com.app.boltfax.R
@@ -24,7 +25,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
         setupObserver()
 
         rootView.edMobileNo.setText("7728966450")
-        rootView.edPassword.setText("Agent@123")
+        rootView.edPassword.setText("Abc12345@")
     }
 
     private fun setupObserver() {
@@ -90,6 +91,32 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                 }
             }
         }
+
+        authViewModel.verifyOTPObserver.observe(viewLifecycleOwner) {
+            when (it) {
+                is Resource.DataNotFound -> {
+                    uiFieldVisibility(loginViaPassword = true)
+                    showSnackBar(
+                        view = rootView.root,
+                        message = it.message ?: ""
+                    )
+                }
+
+                is Resource.Error -> {
+                    uiFieldVisibility(loginViaPassword = true)
+                    showSnackBar(
+                        view = rootView.root,
+                        message = it.message ?: ""
+                    )
+
+                }
+
+                is Resource.Success -> {
+
+
+                }
+            }
+        }
     }
 
     private fun setupOnClickListener() {
@@ -103,6 +130,22 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
 
 
         })
+    }
+
+    private fun countDownTimer() {
+        rootView.tvOTPTimer.visibility = View.VISIBLE
+        rootView.tvGetOTP.isEnabled = false
+        object : CountDownTimer(60000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                rootView.tvOTPTimer.text = "${millisUntilFinished / 1000}"
+            }
+
+            override fun onFinish() {
+                rootView.tvGetOTP.isEnabled = true
+                rootView.tvGetOTP.text = getString(R.string.str_resend_otp)
+            }
+
+        }
     }
 
     override fun onClick(v: View?) {
@@ -119,7 +162,14 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
 
             rootView.tvGetOTP -> {
                 uiFieldVisibility(loginViaPassword = false)
-                authViewModel.generateOTP(requireActivity(), rootView.edMobileNo.text.toString())
+                countDownTimer()
+                if (rootView.tvGetOTP.text == getString(R.string.str_get_otp)){
+                    authViewModel.generateOTP(requireActivity(), "+91${rootView.edMobileNo.text}")
+
+                }
+                else{
+
+                }
             }
 
             rootView.tvForgetPassword -> {

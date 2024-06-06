@@ -65,7 +65,11 @@ class AuthViewModel : ViewModel() {
         MutableLiveData<Resource<String>>()
     }
 
-    fun generateOTP(activity: Activity, contact: String) {
+    fun generateOTP(
+        activity: Activity,
+        contact: String,
+
+        ) {
         synchronized(otpObserver) {
             showLoader.postValue(true)
         }
@@ -79,8 +83,8 @@ class AuthViewModel : ViewModel() {
 
     }
 
-    val verifyOTPObserver: MutableLiveData<Resource<String>> by lazy {
-        MutableLiveData<Resource<String>>()
+    val verifyOTPObserver: MutableLiveData<Resource<Any>> by lazy {
+        MutableLiveData<Resource<Any>>()
     }
 
     fun verifyOTP(otpID: String, otp: String) {

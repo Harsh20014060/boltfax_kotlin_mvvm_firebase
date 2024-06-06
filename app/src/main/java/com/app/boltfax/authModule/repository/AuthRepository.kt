@@ -34,7 +34,11 @@ class AuthRepository {
 
     }
 
-    suspend fun generateOTP(activity: Activity, contactNumber: String): Resource<String> {
+    suspend fun generateOTP(
+        activity: Activity,
+        contactNumber: String,
+        resendToken: ForceResendingToken? = null
+    ): Resource<String> {
         val deferred = CompletableDeferred<Resource<String>>()
 
         val options = PhoneAuthOptions.newBuilder(firebaseAuth)
@@ -53,6 +57,12 @@ class AuthRepository {
                     deferred.complete(Resource.Error(message = e.message ?: "Unknown error"))
                 }
             }) // OnVerificationStateChangedCallbacks
+            .apply {
+                Log.d("TAG", "resendToken: $resendToken")
+                if (resendToken != null) {
+                    setForceResendingToken(resendToken)
+                }
+            }
             .build()
         PhoneAuthProvider.verifyPhoneNumber(options)
 
@@ -61,19 +71,23 @@ class AuthRepository {
         }
     }
 
-    suspend fun verifyOTP(otpID: String, otp: String): Resource<String> {
+    suspend fun verifyOTP(otpID: String, otp: String): Resource<Any> {
+        val deferred = CompletableDeferred<Resource<Any>>()
+
         val credential = PhoneAuthProvider.getCredential(otpID, otp)
         firebaseAuth.signInWithCredential(credential)
             .addOnSuccessListener {
 
-                Log.d("TAG", "verifyOTP: Success...$it")
+                deferred.complete(Resource.Success(true))
 
             }
-            .addOnFailureListener {
-                Log.d("TAG", "verifyOTP: Failure...$it")
+            .addOnFailureListener { it ->
+                deferred.complete(Resource.Error(message = it.message ?: "Unknown error"))
             }
 
-        return Resource.Success("")
+        return withContext(Dispatchers.IO) {
+            deferred.await()
+        }
 
     }
 
