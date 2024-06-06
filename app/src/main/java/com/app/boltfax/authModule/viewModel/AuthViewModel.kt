@@ -8,6 +8,7 @@ import com.app.boltfax.authModule.repository.AuthRepository
 import com.app.boltfax.base.Resource
 import com.app.boltfax.base.UserDataModel
 import com.app.boltfax.util.PasswordUtil
+import com.google.firebase.auth.PhoneAuthProvider
 import kotlinx.coroutines.launch
 
 class AuthViewModel : ViewModel() {
@@ -61,20 +62,21 @@ class AuthViewModel : ViewModel() {
 
     }
 
-    val otpObserver: MutableLiveData<Resource<String>> by lazy {
-        MutableLiveData<Resource<String>>()
+    val otpObserver: MutableLiveData<Resource<Pair<String, PhoneAuthProvider.ForceResendingToken>>> by lazy {
+        MutableLiveData<Resource<Pair<String, PhoneAuthProvider.ForceResendingToken>>>()
     }
 
     fun generateOTP(
         activity: Activity,
         contact: String,
+        resendToken: PhoneAuthProvider.ForceResendingToken? = null
 
         ) {
         synchronized(otpObserver) {
             showLoader.postValue(true)
         }
         viewModelScope.launch {
-            authRepository.generateOTP(activity, contact).let {
+            authRepository.generateOTP(activity, contact, resendToken).let {
 
                 showLoader.postValue(false)
                 otpObserver.postValue(it)

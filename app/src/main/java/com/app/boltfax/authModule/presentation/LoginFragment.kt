@@ -9,6 +9,7 @@ import com.app.boltfax.authModule.viewModel.AuthViewModel
 import com.app.boltfax.base.BaseFragment
 import com.app.boltfax.base.Resource
 import com.app.boltfax.databinding.FragmentLoginBinding
+import com.google.firebase.auth.PhoneAuthProvider.ForceResendingToken
 
 class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::inflate),
     View.OnClickListener {
@@ -17,6 +18,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
         AuthViewModel()
     }
     private var otpVerificationID = ""
+    private var resendToken: ForceResendingToken? = null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -86,7 +88,11 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                 }
 
                 is Resource.Success -> {
-                    otpVerificationID = it.data ?: ""
+                    it.data?.let { token ->
+                        otpVerificationID = token.first
+                        resendToken = token.second
+                    }
+
 
                 }
             }
@@ -163,13 +169,13 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
             rootView.tvGetOTP -> {
                 uiFieldVisibility(loginViaPassword = false)
                 countDownTimer()
-                if (rootView.tvGetOTP.text == getString(R.string.str_get_otp)){
-                    authViewModel.generateOTP(requireActivity(), "+91${rootView.edMobileNo.text}")
 
-                }
-                else{
+                authViewModel.generateOTP(
+                    requireActivity(),
+                    "+91${rootView.edMobileNo.text}",
+                    resendToken
+                )
 
-                }
             }
 
             rootView.tvForgetPassword -> {
@@ -184,7 +190,6 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
     private fun uiFieldVisibility(loginViaPassword: Boolean = true) {
         rootView.edMobileNo.isEnabled = loginViaPassword
         rootView.edPassword.isEnabled = loginViaPassword
-
         rootView.edOTPBox.isEnabled = !loginViaPassword
 
     }

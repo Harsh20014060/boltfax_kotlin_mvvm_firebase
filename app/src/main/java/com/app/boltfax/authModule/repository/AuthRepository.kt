@@ -38,15 +38,22 @@ class AuthRepository {
         activity: Activity,
         contactNumber: String,
         resendToken: ForceResendingToken? = null
-    ): Resource<String> {
-        val deferred = CompletableDeferred<Resource<String>>()
+    ): Resource<Pair<String, ForceResendingToken>> {
+        val deferred = CompletableDeferred<Resource<Pair<String, ForceResendingToken>>>()
 
         val options = PhoneAuthOptions.newBuilder(firebaseAuth)
             .setPhoneNumber(contactNumber) // Phone number to verify
             .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
             .setActivity(activity).setCallbacks(object : OnVerificationStateChangedCallbacks() {
                 override fun onCodeSent(s: String, forceResendingToken: ForceResendingToken) {
-                    deferred.complete(Resource.Success(s))
+                    deferred.complete(
+                        Resource.Success(
+                            Pair(
+                                first = s,
+                                second = forceResendingToken
+                            )
+                        )
+                    )
                 }
 
                 override fun onVerificationCompleted(phoneAuthCredential: PhoneAuthCredential) {
