@@ -19,6 +19,9 @@ nav_version = "2.7.7"
 retrofit_version = "2.9.0"
 okhttp3_logging_version = "4.12.0"
 datastore = "1.1.1"
+dotsIndicatorVersion = "5.0"
+glideVersion = "4.13.0"
+meowVersion = "1.2.0"
 
 
 [libraries]
@@ -41,6 +44,9 @@ retrofit-converter-gson = { group = "com.squareup.retrofit2", name = "converter-
 okhttp3-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp3_logging_version" }
 datastore = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore" }
 countryCodePicker = { group = "com.hbb20", name = "ccp", version.ref = "countryCodePickerVersion" }
+dotsIndicator = { group = "com.tbuonomo", name = "dotsindicator", version.ref = "dotsIndicatorVersion" }
+glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glideVersion" }
+bottomNavigation = { group = "com.etebarian", name = "meow-bottom-navigation", version.ref = "meowVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

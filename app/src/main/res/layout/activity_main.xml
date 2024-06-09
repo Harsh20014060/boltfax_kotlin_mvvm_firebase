@@ -7,13 +7,33 @@
     android:layout_height="match_parent"
     tools:context=".mainModule.presentation.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/navHostMain"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp0"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/graph_main" />
+
+
+    <com.etebarian.meowbottomnavigation.MeowBottomNavigation
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:mbn_backgroundBottomColor="@color/white"
+        app:mbn_circleColor="@color/navyblue"
+        app:mbn_countBackgroundColor="#ff6f00"
+        app:mbn_countTextColor="#ffffff"
+        app:mbn_defaultIconColor="@color/navyblue"
+        app:mbn_rippleColor="@color/navyblue"
+        app:mbn_selectedIconColor="@color/white"
+        app:mbn_shadowColor="#1f212121" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

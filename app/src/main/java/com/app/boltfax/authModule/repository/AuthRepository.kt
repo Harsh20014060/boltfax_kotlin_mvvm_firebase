@@ -9,6 +9,7 @@ import com.app.boltfax.util.FireBaseConstant
 import com.app.boltfax.util.FireBaseConstant.DATABASE_USER_KEY_COUNTRY_CODE
 import com.app.boltfax.util.FireBaseConstant.DATABASE_USER_KEY_FULL_NAME
 import com.app.boltfax.util.FireBaseConstant.DATABASE_USER_KEY_PASSWORD
+import com.app.boltfax.util.MySharedPreference
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
@@ -31,6 +32,47 @@ class AuthRepository {
 
     suspend fun login(contactNumber: String): Resource<UserDataModel> {
         return checkUser(contactNumber)
+
+    }
+
+    suspend fun signup(signUpData: UserDataModel): Resource<UserDataModel> {
+        return when (val result = checkUser(signUpData.contact.toString())) {
+            is Resource.DataNotFound -> {
+                val deferred = CompletableDeferred<Resource<UserDataModel>>()
+                val userData = hashMapOf(
+                    DATABASE_USER_KEY_FULL_NAME to signUpData.fullName,
+                    DATABASE_USER_KEY_COUNTRY_CODE to signUpData.countryCode,
+                    DATABASE_USER_KEY_PASSWORD to signUpData.password
+                )
+
+
+
+
+                dataBase.collection("users").document(signUpData.documentName ?: "").set(userData)
+                    .addOnSuccessListener {
+                        MySharedPreference.setUserData(
+                            signUpData.copy(
+                                documentName = signUpData.contact ?: ""
+                            )
+                        )
+                        deferred.complete(Resource.Success(signUpData))
+                    }.addOnFailureListener { e ->
+                        deferred.complete(Resource.Error(e.message))
+                    }
+
+                return withContext(Dispatchers.IO) {
+                    deferred.await()
+                }
+            }
+
+            is Resource.Error -> {
+                result
+            }
+
+            is Resource.Success -> {
+                Resource.Error("User already exists")
+            }
+        }
 
     }
 
@@ -102,12 +144,12 @@ class AuthRepository {
 
 
     private suspend fun checkUser(contactNumber: String): Resource<UserDataModel> {
-        val contact = "${contactNumber.substring(0, 5)} ${contactNumber.substring(5)}"
+        val documentName = "${contactNumber.substring(0, 5)} ${contactNumber.substring(5)}"
 
         return withContext(Dispatchers.IO) {
             try {
                 val documentSnapshot =
-                    dataBase.collection(FireBaseConstant.DATABASE_USER).document(contact).get()
+                    dataBase.collection(FireBaseConstant.DATABASE_USER).document(documentName).get()
                         .await()
 
                 if (documentSnapshot.exists()) {
@@ -119,8 +161,9 @@ class AuthRepository {
                         password = documentSnapshot.data?.get(DATABASE_USER_KEY_PASSWORD)
                             .toString(),
                         contact = contactNumber,
-                        documentName = contact
+                        documentName = documentName
                     )
+                    MySharedPreference.setUserData(data)
                     Resource.Success(data = data)
 
                 } else {

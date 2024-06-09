@@ -3,12 +3,14 @@ package com.app.boltfax.authModule.presentation
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import com.app.boltfax.R
 import com.app.boltfax.authModule.viewModel.AuthViewModel
 import com.app.boltfax.base.BaseFragment
 import com.app.boltfax.base.Resource
 import com.app.boltfax.databinding.FragmentLoginBinding
+import com.app.boltfax.util.PasswordUtil
 import com.google.firebase.auth.PhoneAuthProvider.ForceResendingToken
 
 class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::inflate),
@@ -28,6 +30,16 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
 
         rootView.edMobileNo.setText("7728966450")
         rootView.edPassword.setText("Abc12345@")
+
+        println(
+            "password ${
+                PasswordUtil.encrypt(
+                    PasswordUtil.generateSaltedKey(
+                        "Harsh Saini", "89492 12867"
+                    ), "Agent@123"
+                )
+            }"
+        )
     }
 
     private fun setupObserver() {
@@ -140,6 +152,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
 
     private fun countDownTimer() {
         rootView.tvOTPTimer.visibility = View.VISIBLE
+        rootView.tvOTPTimer.setTextColor(ContextCompat.getColor(requireContext(), R.color.red))
         rootView.tvGetOTP.isEnabled = false
         object : CountDownTimer(60000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
@@ -149,6 +162,12 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
             override fun onFinish() {
                 rootView.tvGetOTP.isEnabled = true
                 rootView.tvGetOTP.text = getString(R.string.str_resend_otp)
+                rootView.tvOTPTimer.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.blue
+                    )
+                )
             }
 
         }

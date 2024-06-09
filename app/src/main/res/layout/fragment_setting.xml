@@ -1,14 +1,327 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".mainModule.presentation.SettingFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/layoutProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp150"
+                    android:background="@drawable/rounded_bottom_radius_50"
+                    android:elevation="@dimen/dp8"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+
+                    <TextView
+                        android:id="@+id/username"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/dp8"
+                        android:fontFamily="@font/century_bold_italic"
+                        android:gravity="center"
+                        android:textColor="@color/navyblue"
+                        android:textSize="@dimen/sp32"
+                        android:textStyle="bold"
+                        app:drawableStartCompat="@drawable/account_circle"
+                        tools:text="Hello User !!" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layoutMainSettings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dp20"
+                    android:background="@drawable/rounded_all_20"
+                    android:elevation="@dimen/dp8"
+                    android:orientation="vertical"
+                    android:padding="@dimen/dp5"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutProfile">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center">
+
+                        <ImageButton
+                            style="@style/styleSettingsIcon"
+                            android:src="@drawable/language" />
+
+                        <TextView
+                            style="@style/styleSettingsText"
+                            android:text="@string/str_choose_language" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/paymentdetails"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+                        <ImageButton
+                            style="@style/styleSettingsIcon"
+                            android:src="@drawable/payment_details" />
+
+                        <TextView
+                            style="@style/styleSettingsText"
+                            android:text="@string/str_payment_details" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/mywallet"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+                        <ImageButton
+                            style="@style/styleSettingsIcon"
+                            android:src="@drawable/rupee" />
+
+                        <TextView
+                            style="@style/styleSettingsText"
+                            android:text="@string/str_my_wallet" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/mywhishlist"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+                        <ImageButton
+                            style="@style/styleSettingsIcon"
+                            android:src="@drawable/favorite" />
+
+                        <TextView
+                            style="@style/styleSettingsText"
+                            android:text="@string/str_my_wishlist" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/myorders"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+                        <ImageButton
+                            style="@style/styleSettingsIcon"
+                            android:src="@drawable/shopping_bag" />
+
+                        <TextView
+                            style="@style/styleSettingsText"
+                            android:text="@string/str_my_orders" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/mychashbbackpoint"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+                        <ImageButton
+                            style="@style/styleSettingsIcon"
+                            android:src="@drawable/emoji" />
+
+                        <TextView
+                            style="@style/styleSettingsText"
+                            android:text="@string/str_cashback_points" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/privacyAndPolicy"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+                        <ImageButton
+                            style="@style/styleSettingsIcon"
+                            android:src="@drawable/privacy" />
+
+                        <TextView
+                            style="@style/styleSettingsText"
+                            android:text="@string/str_privacy_policy" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/termsandcondition"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+                        <ImageButton
+                            style="@style/styleSettingsIcon"
+                            android:src="@drawable/privacy" />
+
+                        <TextView
+                            style="@style/styleSettingsText"
+                            android:text="@string/str_terms_amp_conditions" />
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/helpAndSupport"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+                        <ImageButton
+                            style="@style/styleSettingsIcon"
+                            android:src="@drawable/contact_support" />
+
+                        <TextView
+
+                            style="@style/styleSettingsText"
+                            android:text="@string/str_help_amp_support" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/feedbackAndSuggestion"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+                        <ImageButton
+                            style="@style/styleSettingsIcon"
+                            android:src="@drawable/feedback" />
+
+                        <TextView
+
+                            style="@style/styleSettingsText"
+                            android:text="@string/str_feedback_suggestions"
+
+                            tools:ignore="HardcodedText" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ourStory"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+                        <ImageButton
+                            style="@style/styleSettingsIcon"
+                            android:src="@drawable/about_us" />
+
+                        <TextView
+
+                            style="@style/styleSettingsText"
+                            android:text="@string/str_developer_profile" />
+
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/setting"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/dp20"
+                    android:layout_marginTop="@dimen/dp30"
+                    android:layout_marginEnd="@dimen/dp20"
+                    android:background="@drawable/rounded_all_20"
+                    android:elevation="@dimen/dp8"
+                    android:gravity="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutMainSettings">
+
+                    <ImageButton
+                        style="@style/styleSettingsIcon"
+                        android:src="@drawable/settings" />
+
+                    <TextView
+                        style="@style/styleSettingsText"
+                        android:layout_marginTop="@dimen/dp10"
+                        android:layout_marginBottom="@dimen/dp10"
+                        android:text="@string/str_settings" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/signOut"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/dp20"
+                    android:layout_marginTop="@dimen/dp30"
+                    android:layout_marginEnd="@dimen/dp20"
+                    android:layout_marginBottom="@dimen/dp40"
+                    android:background="@drawable/rounded_all_20"
+                    android:elevation="@dimen/dp8"
+                    android:gravity="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/setting">
+
+                    <ImageButton
+                        style="@style/styleSettingsIcon"
+                        android:src="@drawable/logout" />
+
+                    <TextView
+                        style="@style/styleSettingsText"
+                        android:layout_marginTop="@dimen/dp10"
+                        android:layout_marginBottom="@dimen/dp10"
+                        android:text="@string/str_sign_out" />
+
+
+                </LinearLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

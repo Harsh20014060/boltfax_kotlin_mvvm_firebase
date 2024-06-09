@@ -77,4 +77,15 @@ dependencies {
     // COUNTRY CODE PICKER
     implementation(libs.countryCodePicker)
 
+    // DOTS INDICATOR
+    implementation(libs.dotsIndicator)
+
+    // Glide
+    implementation(libs.glide)
+
+    // BOTTOM NAVIGATION
+    implementation(libs.bottomNavigation)
+
+
+
 }

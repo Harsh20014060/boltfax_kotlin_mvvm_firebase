@@ -25,4 +25,17 @@
     <string name="str_back_to_login">Back to Login</string>
     <string name="str_create_a_new_account">Create A New Account</string>
     <string name="str_resend_otp">Resend OTP</string>
+    <string name="str_sign_out">Sign Out</string>
+    <string name="str_settings">Settings</string>
+    <string name="str_choose_language">Choose Language</string>
+    <string name="str_developer_profile">Developer Profile</string>
+    <string name="str_feedback_suggestions"><![CDATA[Feedback & Suggestions]]></string>
+    <string name="str_help_amp_support"><![CDATA[Help & Support]]></string>
+    <string name="str_terms_amp_conditions"><![CDATA[Terms & Conditions]]></string>
+    <string name="str_privacy_policy">Privacy Policy</string>
+    <string name="str_cashback_points">Cashback Points</string>
+    <string name="str_my_orders">My Orders</string>
+    <string name="str_my_wishlist">My Wishlist</string>
+    <string name="str_my_wallet">My Wallet</string>
+    <string name="str_payment_details">Payment Details</string>
 </resources>

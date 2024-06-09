@@ -82,7 +82,7 @@
                     app:ccp_textSize="@dimen/sp16" />
 
                 <EditText
-                    android:id="@+id/mobile_number"
+                    android:id="@+id/edContactNumber"
                     style="@style/inputBoxAuthenticationStyle"
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="@dimen/dp0"
@@ -140,23 +140,23 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edOTPBox">
 
-                <CheckBox
-                    android:id="@+id/termsandcondition_checked"
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/cbTermsAndCondition"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:buttonTint="@color/navyblue"
                     android:text="I Accept all the"
+                    android:checked="true"
                     android:textColor="@color/black"
-                    android:textSize="14dp" />
+                    android:textSize="@dimen/sp14" />
 
                 <TextView
-                    android:id="@+id/accept_termsandcondition"
+                    android:id="@+id/tvTermAndCondition"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text=" Terms and Conditions"
                     android:textColor="@color/blue"
-                    android:textSize="14dp" />
+                    android:textSize="@dimen/sp14" />
 
             </LinearLayout>
 

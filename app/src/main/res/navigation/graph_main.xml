@@ -3,25 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/graph_main"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/navHomeFragment">
 
     <fragment
-        android:id="@+id/homeFragment"
+        android:id="@+id/navHomeFragment"
         android:name="com.app.boltfax.mainModule.presentation.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
-        android:id="@+id/categoryFragment"
+        android:id="@+id/navCategoryFragment"
         android:name="com.app.boltfax.mainModule.presentation.CategoryFragment"
         android:label="fragment_category"
         tools:layout="@layout/fragment_category" />
     <fragment
-        android:id="@+id/cartFragment"
+        android:id="@+id/navCartFragment"
         android:name="com.app.boltfax.mainModule.presentation.CartFragment"
         android:label="fragment_cart"
         tools:layout="@layout/fragment_cart" />
     <fragment
-        android:id="@+id/settingFragment"
+        android:id="@+id/navSettingFragment"
         android:name="com.app.boltfax.mainModule.presentation.SettingFragment"
         android:label="fragment_setting"
         tools:layout="@layout/fragment_setting" />

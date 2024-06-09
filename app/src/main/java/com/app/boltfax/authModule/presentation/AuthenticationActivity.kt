@@ -1,5 +1,6 @@
 package com.app.boltfax.authModule.presentation
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.core.view.ViewCompat
@@ -8,6 +9,7 @@ import androidx.navigation.fragment.NavHostFragment
 import com.app.boltfax.R
 import com.app.boltfax.base.BaseActivity
 import com.app.boltfax.databinding.ActivityAuthenticationBinding
+import com.app.boltfax.mainModule.presentation.MainActivity
 
 class AuthenticationActivity :
     BaseActivity<ActivityAuthenticationBinding>(ActivityAuthenticationBinding::inflate) {
@@ -29,6 +31,7 @@ class AuthenticationActivity :
             insets
         }
 
+        startActivity(Intent(this, MainActivity::class.java))
 
         navController.addOnDestinationChangedListener { _, destination, arguments ->
         }

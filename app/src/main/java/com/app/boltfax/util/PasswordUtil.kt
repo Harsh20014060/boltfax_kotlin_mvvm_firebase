@@ -1,6 +1,7 @@
 package com.app.boltfax.util
 
 import android.util.Base64
+import android.util.Log
 import java.security.MessageDigest
 import javax.crypto.Cipher
 import javax.crypto.spec.SecretKeySpec
@@ -8,6 +9,7 @@ import javax.crypto.spec.SecretKeySpec
 object PasswordUtil {
 
     fun generateSaltedKey(name: String, documentName: String): String {
+        Log.d("TAG", "generateSaltedKey: $name..$documentName")
 //        val minLength = minOf(name.length, mobile.length)
 //        val zippedPart =
 //            name.zip(mobile).take(minLength).joinToString("") { "${it.first}${it.second}" }
@@ -27,6 +29,8 @@ object PasswordUtil {
 
     fun encrypt(keyValue: String, password: String): String {
 
+        Log.d("TAG", "encrypt: $keyValue..$password")
+
         val key = generateKey(keyValue)
         val cipher = Cipher.getInstance("AES").apply {
             init(Cipher.ENCRYPT_MODE, key)
@@ -36,6 +40,9 @@ object PasswordUtil {
     }
 
     fun decrypt(keyValue: String, encryptedPass: String): String {
+
+        Log.d("TAG", "encrypt: $keyValue..$encryptedPass")
+
         val key = generateKey(keyValue)
 
         val c = Cipher.getInstance("AES")
