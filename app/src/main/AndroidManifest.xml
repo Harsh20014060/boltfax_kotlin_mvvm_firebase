@@ -8,20 +8,15 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:name=".BoltFaxApplication"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.BoltFax"
+        android:theme="@style/Theme.BoltFax_Compose"
         tools:targetApi="31">
         <activity
-            android:name=".SplashActivity"
-            android:exported="false" />
-        <activity
-            android:name=".mainModule.presentation.MainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".authModule.presentation.AuthenticationActivity"
-            android:exported="true">
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.BoltFax_Compose">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
