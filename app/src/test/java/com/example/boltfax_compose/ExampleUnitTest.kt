@@ -1,4 +1,4 @@
-package com.app.boltfax
+package com.example.boltfax_compose
 
 import org.junit.Test
 

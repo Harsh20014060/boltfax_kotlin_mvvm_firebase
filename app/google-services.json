@@ -1,0 +1,126 @@
+{
+  "project_info": {
+    "project_number": "835557542476",
+    "firebase_url": "https://boltfax-d55b9-default-rtdb.firebaseio.com",
+    "project_id": "boltfax-d55b9",
+    "storage_bucket": "boltfax-d55b9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:835557542476:android:99691130c7f3d35466c2e9",
+        "android_client_info": {
+          "package_name": "com.app.boltfax"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwl8wf3awPhQib_s9qljoBrgzF5l5ODJI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:835557542476:android:f114a96f81b2c52366c2e9",
+        "android_client_info": {
+          "package_name": "com.application.boltfax"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwl8wf3awPhQib_s9qljoBrgzF5l5ODJI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      },
+      "admob_app_id": "ca-app-pub-1862035894487465~9775775525"
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:835557542476:android:c60f9d4fb209094366c2e9",
+        "android_client_info": {
+          "package_name": "com.bolt.boltfax_compose"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwl8wf3awPhQib_s9qljoBrgzF5l5ODJI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:835557542476:android:5bde0bfd318e234966c2e9",
+        "android_client_info": {
+          "package_name": "com.example.aduse"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwl8wf3awPhQib_s9qljoBrgzF5l5ODJI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:835557542476:android:38d1c7cf8f3266cb66c2e9",
+        "android_client_info": {
+          "package_name": "com.example.insertdatafirestore"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwl8wf3awPhQib_s9qljoBrgzF5l5ODJI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:835557542476:android:3d798c67771b09df66c2e9",
+        "android_client_info": {
+          "package_name": "com.example.retrieve_data"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwl8wf3awPhQib_s9qljoBrgzF5l5ODJI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

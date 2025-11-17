@@ -1,4 +1,4 @@
-package com.example.boltfax_compose.ui.theme
+package com.example.boltfax_compose.ui
 
 import androidx.compose.ui.graphics.Color
 
@@ -9,3 +9,7 @@ val Pink80 = Color(0xFFEFB8C8)
 val Purple40 = Color(0xFF6650a4)
 val PurpleGrey40 = Color(0xFF625b71)
 val Pink40 = Color(0xFF7D5260)
+
+val ColorPrimary = Color(0xFF2C3E50)
+val ColorSecondary = Color(0xffd1fdff)
+val ColorSecondaryGradient= Color(0xfff5f7fa)
